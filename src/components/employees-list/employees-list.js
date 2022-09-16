@@ -5,9 +5,10 @@ import "./employees-list.css";
 const EmployeesList = ({ data }) => {
 	return (
 		<ul className="app-list list-group">
-			{data.map((item) => (
-				<EmployeesListItem {...item} />
-			))}
+			{data.map((item) => {
+				const { id, ...itemProps } = item;
+				return <EmployeesListItem key={id} {...itemProps} />;
+			})}
 		</ul>
 	);
 };
