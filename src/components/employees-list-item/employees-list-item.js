@@ -22,7 +22,7 @@ const EmployeesListItem = ({
 				className="list-group-item-label"
 				onClick={onToggleProp}
 				data-toggle="rise"
-			>
+			> 
 				{name}
 			</span>
 			<input

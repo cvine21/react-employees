@@ -13,10 +13,29 @@ class App extends Component {
 		super(props);
 		this.state = {
 			data: [
-				{ name: "John C.", salary: 800, prop: false, rise: true, id: 1 },
-				{ name: "Alex M.", salary: 3000, prop: false, rise: false, id: 2 },
-				{ name: "Carl W.", salary: 5000, prop: false, rise: false, id: 3 },
+				{
+					name: "John C.",
+					salary: 800,
+					prop: false,
+					rise: true,
+					id: 1,
+				},
+				{
+					name: "Alex M.",
+					salary: 3000,
+					prop: false,
+					rise: false,
+					id: 2,
+				},
+				{
+					name: "Carl W.",
+					salary: 5000,
+					prop: false,
+					rise: false,
+					id: 3,
+				},
 			],
+			term: "",
 		};
 		this.maxId = this.state.data.length + 1;
 	}
@@ -51,21 +70,31 @@ class App extends Component {
 		}));
 	};
 
+	searchEmp = (items, term) => {
+		if (!term.length) return items;
+		return items.filter((item) => item.name.indexOf(term) !== -1);
+	};
+
+	onUpdateSearch = (term) => {
+		this.setState({ term });
+	};
+
 	render() {
-		const { data } = this.state;
+		const { data, term } = this.state;
 		const propd = data.filter((item) => item.prop).length;
+		const visibleData = this.searchEmp(data, term);
 
 		return (
 			<div className="app">
 				<AppInfo employees={data.length} propd={propd} />
 
 				<div className="search-panel">
-					<SearchPanel />
+					<SearchPanel onUpdateSearch={this.onUpdateSearch} />
 					<AppFilter />
 				</div>
 
 				<EmployeesList
-					data={this.state.data}
+					data={visibleData}
 					onDelete={this.deleteItem}
 					onToggleProp={this.onToggleProp}
 				/>
