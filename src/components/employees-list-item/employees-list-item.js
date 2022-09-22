@@ -4,8 +4,7 @@ const EmployeesListItem = ({
 	name,
 	salary,
 	onDelete,
-	onToggleIncrease,
-	onToggleRise,
+	onToggleProp,
 	increase,
 	rise,
 }) => {
@@ -19,7 +18,11 @@ const EmployeesListItem = ({
 
 	return (
 		<li className={classNames}>
-			<span className="list-group-item-label" onClick={onToggleRise}>
+			<span
+				className="list-group-item-label"
+				onClick={onToggleProp}
+				data-toggle="rise"
+			>
 				{name}
 			</span>
 			<input
@@ -31,7 +34,8 @@ const EmployeesListItem = ({
 				<button
 					type="button"
 					className="btn-cookie btn-sm "
-					onClick={onToggleIncrease}
+					onClick={onToggleProp}
+					data-toggle="increase"
 				>
 					<i className="fas fa-cookie"></i>
 				</button>

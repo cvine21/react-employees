@@ -2,14 +2,7 @@ import EmployeesListItem from "../employees-list-item/employees-list-item";
 
 import "./employees-list.css";
 
-const EmployeesList = ({
-	data,
-	onDelete,
-	onToggleIncrease,
-	onToggleRise,
-	increase,
-	rise,
-}) => {
+const EmployeesList = ({ data, onDelete, onToggleProp }) => {
 	return (
 		<ul className="app-list list-group">
 			{data.map((item) => {
@@ -19,10 +12,9 @@ const EmployeesList = ({
 						key={id}
 						{...itemProps}
 						onDelete={() => onDelete(id)}
-						onToggleIncrease={() => onToggleIncrease(id)}
-						onToggleRise={() => onToggleRise(id)}
-						increase={increase}
-						rise={rise}
+						onToggleProp={(e) =>
+							onToggleProp(id, e.currentTarget.getAttribute("data-toggle"))
+						}
 					/>
 				);
 			})}
