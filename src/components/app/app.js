@@ -16,21 +16,21 @@ class App extends Component {
 				{
 					name: "John C.",
 					salary: 800,
-					prop: false,
+					increase: false,
 					rise: true,
 					id: 1,
 				},
 				{
 					name: "Alex M.",
 					salary: 3000,
-					prop: false,
+					increase: false,
 					rise: false,
 					id: 2,
 				},
 				{
 					name: "Carl W.",
 					salary: 5000,
-					prop: false,
+					increase: false,
 					rise: false,
 					id: 3,
 				},
@@ -51,7 +51,7 @@ class App extends Component {
 		const newItem = {
 			name: name,
 			salary: salary,
-			prop: false,
+			increase: false,
 			rise: false,
 			id: this.maxId++,
 		};
@@ -97,7 +97,7 @@ class App extends Component {
 
 	render() {
 		const { data, term, filter } = this.state;
-		const increased = data.filter((item) => item.prop).length;
+		const increased = data.filter((item) => item.increase).length;
 		const filteredData = this.filterPost(data, filter);
 		const visibleData = this.searchEmp(filteredData, term);
 
